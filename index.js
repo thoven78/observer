@@ -16,6 +16,21 @@
         }
       }
     },
+    add: function(data) {
+      if (this.list.indexOf(data) === -1) {
+        this.list.push(data);
+        this.trigger('add');
+      }
+      return this.list;
+    },
+    remove: function(data) {
+      var index = this.list.indexOf(data);
+      if (index > -1) {
+        this.list.splice(index, 1);
+        this.trigger('remove');
+      }
+      return this.list;
+    },
     on: function(type, fn) {
       if (!this.listeners[type]) {
         this.listeners[type] = [];
